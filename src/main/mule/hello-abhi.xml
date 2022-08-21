@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="26bfa5a7-2d9b-479a-a957-7f814583d2f6" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="hello-abhiFlow" doc:id="0026ee81-06fd-4993-acc0-cc4a03c30933" >
+		<http:listener doc:name="Listener" doc:id="869b507a-10b5-4022-84a0-9e1cdc2d4ac8" config-ref="HTTP_Listener_config" path="/hello"/>
+		<flow-ref doc:name="call-hello-abhiSub_Flow" doc:id="a4734761-b7c2-45cc-8cbe-6fa673b3ce9f" name="hello-abhiSub_Flow"/>
+	</flow>
+	<sub-flow name="hello-abhiSub_Flow" doc:id="22fa7b2e-6233-4f4d-a745-d4cbc0dd26a1" >
+		<set-payload value='#["Hello Abhishek"]' doc:name="Set Payload" doc:id="84d3d542-f8c8-4166-9b69-3addf170b465" />
+	</sub-flow>
+</mule>

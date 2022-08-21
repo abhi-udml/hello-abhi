@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="hello-abhi-test-suite.xml" />
+	<munit:test name="hello-abhi-test-suite-hello-abhiSub_FlowTest" doc:id="e2e67b6b-5233-44f6-84b4-16a31b2b2545" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to hello-abhiSub_Flow" doc:id="3110f677-d541-4f40-9026-1f7e286a84a2" name="hello-abhiSub_Flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="189326b7-5c47-4276-a28b-8b4d8e9d491d" actual="#[payload]" expected='#["Hello Abhishek"]' message='#["payload is not expected !!!"]'/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
